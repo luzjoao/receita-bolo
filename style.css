@@ -1,0 +1,714 @@
+/* =========================================================
+   BOLO DE CENOURA · COBERTURA DE CHOCOLATE
+   Paleta: creme, laranja-cenoura, chocolate
+   Tipografia: Fraunces (títulos) + Manrope (corpo)
+   ========================================================= */
+
+/* ---------- 1. Variáveis e reset ---------- */
+:root {
+  --bg:           #F5EDDC;
+  --bg-warm:      #EFE3C8;
+  --paper:        #FAF4E5;
+  --ink:          #2D1B0E;
+  --ink-soft:     #5C4434;
+  --carrot:       #D87021;
+  --carrot-deep:  #B05816;
+  --chocolate:    #3E2014;
+  --chocolate-2:  #5A3120;
+  --green:        #7A8B3C;
+  --line:         #D9C9A8;
+  --shadow:       0 12px 40px -12px rgba(62, 32, 20, 0.25);
+  --shadow-sm:    0 4px 14px -4px rgba(62, 32, 20, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(62, 32, 20, 0.06) 1px, transparent 0);
+  background-size: 22px 22px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+
+/* ---------- 2. Container ---------- */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- 3. Header ---------- */
+.site-header {
+  border-bottom: 1px solid var(--line);
+  padding: 22px 0;
+  background-color: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--chocolate);
+  letter-spacing: -0.01em;
+}
+
+.brand-tag {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ---------- 4. Hero ---------- */
+.hero {
+  padding: 72px 0 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.kicker {
+  display: inline-block;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--carrot-deep);
+  font-weight: 600;
+  margin-bottom: 18px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--carrot);
+}
+
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 6.5vw, 4.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  color: var(--chocolate);
+  margin-bottom: 24px;
+}
+
+.title-em {
+  display: block;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--carrot);
+  font-size: 0.78em;
+  margin: 6px 0;
+}
+
+.lead {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  max-width: 46ch;
+  margin-bottom: 32px;
+}
+
+/* meta info */
+.meta {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.meta-item { display: flex; flex-direction: column; gap: 2px; }
+
+.meta-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.meta-value {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--chocolate);
+}
+
+/* imagem do bolo */
+.hero-image { position: relative; }
+
+.hero-image img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+  background-color: var(--bg-warm);
+  transition: transform 0.5s ease;
+}
+
+.hero-image:hover img { transform: scale(1.02); }
+
+.hero-image figcaption {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  text-align: right;
+}
+
+/* elementos decorativos flutuando */
+.float-deco {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  animation: float 6s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+.float-deco--1 {
+  width: 60px;
+  top: 40px;
+  right: 8%;
+  animation-delay: 0s;
+  transform: rotate(15deg);
+}
+
+.float-deco--2 {
+  width: 24px;
+  top: 35%;
+  left: 5%;
+  animation-delay: 2s;
+}
+
+.float-deco--3 {
+  width: 18px;
+  bottom: 20%;
+  left: 12%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(15deg); }
+  50%      { transform: translateY(-15px) rotate(20deg); }
+}
+
+.float-deco--2,
+.float-deco--3 { animation-name: floatSimple; }
+
+@keyframes floatSimple {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+@media (min-width: 800px) {
+  .hero-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 72px;
+  }
+}
+
+/* ---------- 5. Cabeçalho de seção ---------- */
+.section-head {
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+
+.section-num {
+  display: inline-block;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--carrot-deep);
+  margin-bottom: 8px;
+  letter-spacing: 0.1em;
+}
+
+.section-head h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.05;
+  color: var(--chocolate);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.section-sub { color: var(--ink-soft); font-size: 1.02rem; }
+.section-sub em { color: var(--carrot-deep); font-style: italic; font-weight: 500; }
+
+/* ---------- 6. Ingredientes ---------- */
+.ingredients {
+  padding: 64px 0;
+  background-color: var(--bg-warm);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.ingredient-block {
+  background: var(--paper);
+  padding: 36px 32px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ingredient-block:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.ingredient-block::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--carrot);
+  border-radius: 6px 0 0 6px;
+}
+
+.ingredient-block--alt::before { background: var(--chocolate); }
+
+.ingredient-block h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--chocolate);
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed var(--line);
+}
+
+.checklist { list-style: none; }
+
+.checklist li {
+  padding: 12px 0 12px 34px;
+  position: relative;
+  border-bottom: 1px dotted var(--line);
+  color: var(--ink);
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.25s ease;
+}
+
+.checklist li:last-child { border-bottom: none; }
+
+/* círculo (estilo "checkbox") */
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 16px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--carrot);
+  background: transparent;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.ingredient-block--alt .checklist li::before { border-color: var(--chocolate); }
+
+/* check em si (escondido até clicar) */
+.checklist li::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 19px;
+  width: 6px;
+  height: 10px;
+  border-right: 2.5px solid var(--paper);
+  border-bottom: 2.5px solid var(--paper);
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.2s ease;
+}
+
+.checklist li:hover::before { background: rgba(216, 112, 33, 0.15); }
+.ingredient-block--alt .checklist li:hover::before { background: rgba(62, 32, 20, 0.15); }
+
+.checklist li.checked {
+  color: var(--ink-soft);
+  text-decoration: line-through;
+  text-decoration-color: var(--carrot);
+  text-decoration-thickness: 2px;
+}
+
+.checklist li.checked::before {
+  background: var(--carrot);
+  transform: scale(1.1);
+}
+
+.ingredient-block--alt .checklist li.checked::before { background: var(--chocolate); }
+.ingredient-block--alt .checklist li.checked { text-decoration-color: var(--chocolate); }
+
+.checklist li.checked::after {
+  transform: rotate(45deg) scale(1);
+}
+
+@media (min-width: 700px) {
+  .ingredients-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+/* ---------- 7. Dicas da Vovó ---------- */
+.tips { padding: 72px 0 64px; }
+
+.tips .section-num { font-size: 1.4rem; color: var(--carrot); }
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+.tip-card {
+  background: var(--paper);
+  padding: 32px 28px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tip-card::after {
+  content: "";
+  position: absolute;
+  top: 0; right: 0;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at top right, rgba(216, 112, 33, 0.08), transparent 70%);
+  border-radius: 0 8px 0 0;
+}
+
+.tip-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.tip-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--bg-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  color: var(--carrot);
+}
+
+.tip-card:nth-child(2) .tip-icon { color: var(--chocolate); }
+.tip-card:nth-child(3) .tip-icon { color: var(--green); }
+
+.tip-icon svg { width: 32px; height: 32px; }
+
+.tip-card h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--chocolate);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.tip-card p {
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 700px) {
+  .tips-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+}
+
+/* ---------- 8. Modo de preparo ---------- */
+.method {
+  padding: 72px 0;
+  background-color: var(--bg-warm);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.steps {
+  list-style: none;
+  counter-reset: step;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 4px 0 28px 72px;
+  margin-bottom: 8px;
+  border-left: 2px solid var(--line);
+  margin-left: 22px;
+}
+
+.steps li:last-child { border-left-color: transparent; padding-bottom: 0; }
+
+.steps li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: -24px;
+  top: -4px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--chocolate);
+  color: var(--bg);
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px -4px rgba(62, 32, 20, 0.4);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.steps li:hover::before {
+  background: var(--carrot);
+  transform: scale(1.08) rotate(-5deg);
+}
+
+.steps li strong { color: var(--carrot-deep); font-weight: 700; }
+
+/* ---------- 9. CTA ---------- */
+.cta {
+  background: var(--chocolate);
+  color: var(--bg);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 80% 20%,
+    rgba(216, 112, 33, 0.25) 0%,
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+.cta-inner {
+  position: relative;
+  text-align: center;
+  max-width: 600px;
+}
+
+.cta-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  line-height: 1.1;
+  margin-bottom: 14px;
+  color: var(--bg);
+}
+
+.cta-sub {
+  color: rgba(245, 237, 220, 0.8);
+  margin-bottom: 32px;
+  font-size: 1.02rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  padding: 16px 40px;
+  background: var(--carrot);
+  color: var(--bg);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 6px 20px -6px rgba(216, 112, 33, 0.6);
+}
+
+.cta-btn:hover {
+  background: #E07F30;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -6px rgba(216, 112, 33, 0.7);
+}
+
+.cta-btn:active { transform: translateY(0); }
+
+.cta-btn:focus-visible {
+  outline: 3px solid var(--bg);
+  outline-offset: 3px;
+}
+
+/* ---------- 10. Footer ---------- */
+.site-footer {
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  padding: 28px 0;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.footer-credit { font-family: 'Fraunces', serif; font-style: italic; }
+
+/* ---------- 11. Botão "voltar ao topo" ---------- */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--chocolate);
+  color: var(--bg);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px -6px rgba(62, 32, 20, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background 0.2s ease;
+  z-index: 100;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover { background: var(--carrot); transform: translateY(-3px); }
+.back-to-top svg { width: 22px; height: 22px; }
+
+/* ---------- 12. Animações de revelação no scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .float-deco { animation: none; }
+  .hero-image:hover img { transform: none; }
+}
+
+/* ---------- 13. Ajustes mobile finos ---------- */
+@media (max-width: 600px) {
+  .hero { padding: 48px 0 32px; }
+  .ingredients, .method, .tips { padding: 56px 0; }
+  .cta { padding: 64px 0; }
+  .container { padding: 0 20px; }
+  .meta { gap: 20px; }
+  .meta-value { font-size: 1.3rem; }
+  .ingredient-block { padding: 28px 24px; }
+  .steps li { padding-left: 60px; margin-left: 18px; }
+  .steps li::before { width: 40px; height: 40px; font-size: 0.9rem; left: -21px; }
+  .float-deco--1 { width: 40px; right: 4%; }
+  .back-to-top { bottom: 16px; right: 16px; width: 42px; height: 42px; }
+}
+
+/* ---------- 14. Estilos de impressão ---------- */
+@media print {
+  body {
+    background: white;
+    background-image: none;
+    color: black;
+    font-size: 12pt;
+  }
+
+  .site-header,
+  .cta,
+  .back-to-top,
+  .float-deco,
+  .hero-image figcaption {
+    display: none !important;
+  }
+
+  .hero, .ingredients, .method, .tips {
+    padding: 16pt 0;
+    page-break-inside: avoid;
+    background: white !important;
+    border: none !important;
+  }
+
+  .hero h1 { font-size: 28pt; color: black; }
+  .title-em { color: #555; }
+  .section-head h2 { color: black; font-size: 18pt; }
+  .ingredient-block, .tip-card { box-shadow: none; border: 1px solid #ccc; }
+  .steps li::before { background: black; }
+
+  /* manter imagem em print */
+  .hero-image img { max-width: 60%; box-shadow: none; }
+
+  /* evitar quebras feias */
+  .ingredient-block, .tip-card, .steps li { page-break-inside: avoid; }
+  h2, h3 { page-break-after: avoid; }
+}

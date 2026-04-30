@@ -4,6 +4,10 @@ Página web da receita feita com **HTML5 + CSS3 + JavaScript**.
 
 Projeto desenvolvido por **João Eduardo**.
 
+## 🌐 Acesse online
+
+**🔗 [https://luzjoao.github.io/receita-bolo/](https://luzjoao.github.io/receita-bolo/)**
+
 ## 📂 Estrutura do projeto
 
 ```
@@ -48,14 +52,17 @@ A página espera um arquivo chamado **`bolo.jpg`** na mesma pasta:
 - **Acessibilidade** — `aria-label`, `alt` em imagens, respeita `prefers-reduced-motion`
 - **Responsivo** — funciona em celular, tablet e desktop
 
-## 🚀 Publicando no GitHub Pages
+## 🚀 Publicação
 
-1. Crie um repositório no GitHub (ex.: `receita-bolo`)
-2. Suba **todos os arquivos** (incluindo o `bolo.jpg`)
-3. Vá em **Settings → Pages**
-4. Em **Source**, selecione o branch `main` e a pasta `/ (root)`
-5. Salve. O link aparece no topo:
-   `https://SEU-USUARIO.github.io/receita-bolo/`
+Este projeto está hospedado gratuitamente no **GitHub Pages**:
+
+🔗 **[luzjoao.github.io/receita-bolo](https://luzjoao.github.io/receita-bolo/)**
+
+### Como o GitHub Pages foi ativado
+
+1. Repositório criado com os arquivos `index.html`, `style.css`, `script.js` e `bolo.jpg`
+2. Em **Settings → Pages**, selecionado o branch `main` e a pasta `/ (root)`
+3. O link público é gerado automaticamente em alguns segundos
 
 ## ✅ Critérios atendidos
 
@@ -71,6 +78,7 @@ A página espera um arquivo chamado **`bolo.jpg`** na mesma pasta:
 | Responsividade | `clamp()`, `max-width`, media queries (1, 2 e 3 colunas) |
 | Estética | paleta harmoniosa com bom contraste |
 | JavaScript | `alert()` + checklist + voltar ao topo + scroll reveal |
+| Link ativo | [luzjoao.github.io/receita-bolo](https://luzjoao.github.io/receita-bolo/) |
 
 ## 🎓 Conceitos extras demonstrados
 
